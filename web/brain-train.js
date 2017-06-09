@@ -1,3 +1,5 @@
+// ---------- UI hooks ---------------
+
 var displayContainer = document.getElementById('displayContainer')
 var display1 = document.getElementById('display1')
 var display2 = document.getElementById('display2')
@@ -13,13 +15,8 @@ var results = document.getElementById('results')
 var resetBtn = document.getElementById('resetBtn')
 var scoreTally = document.getElementById('scoreTally')
 
-var displays = [display1, display2, display3, display4]
-var comboToCopy = ['', '','', '']
-var comboAnswer = ['', '','', '']
-var counter = 0;
-var score = 0;
 
-initialize()
+// ------------ Listeners ----------------------
 
 btnBlue.onclick = function() { submitAnswer('blue') }
 btnGreen.onclick = function() { submitAnswer('green') }
@@ -29,7 +26,18 @@ btnRed.onclick = function() { submitAnswer('red') }
 resetBtn.onclick = function() { initialize() }
 
 
-// ----- Setup ------------
+// ------------ Startup -----------------------
+
+var displays = [display1, display2, display3, display4]
+var comboToCopy = ['', '','', '']
+var comboAnswer = ['', '','', '']
+var counter = 0;
+var score = 0;
+
+initialize()
+
+
+// ------------- Setup functions ---------------
 
 function initialize() {
     hideColors()
@@ -37,10 +45,10 @@ function initialize() {
     resultContainer.style.display = 'none'
     inputContainer.style.display = 'none'
 
-    setTimeout('displayColor(comboToCopy[0], display1)', 500)
-    setTimeout('displayColor(comboToCopy[1], display2)', 750)
-    setTimeout('displayColor(comboToCopy[2], display3)', 1000)
-    setTimeout('displayColor(comboToCopy[3], display4)', 1250)
+    setTimeout('displayColor(comboToCopy[0], displays[0])', 500)
+    setTimeout('displayColor(comboToCopy[1], displays[1])', 750)
+    setTimeout('displayColor(comboToCopy[2], displays[2])', 1000)
+    setTimeout('displayColor(comboToCopy[3], displays[3])', 1250)
     setTimeout('inputContainer.style.display = "block"', 2500)
 
     setTimeout(hideColors, 2500)
@@ -48,7 +56,6 @@ function initialize() {
 
 function getNewCombo() {
     var newCombo = [getRandomColor(), getRandomColor(), getRandomColor(), getRandomColor()]
-    console.log("Guess: " + newCombo)
     return newCombo
 }
 

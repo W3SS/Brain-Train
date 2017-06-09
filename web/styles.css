@@ -9,42 +9,63 @@ body {
 	background-color: #FFC107;
 	color: #ffffff;
 	height: 100vh;
+	margin: 0;
+}
+
+header {
+	height: 80px;
+	background-color: #FF8F00;
+	box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+
+header > img {
+	height: 60px;
+	margin: 10px 20px;
+	position: absolute;
+	left: 0;
+}
+
+header > span {
+	font-family: 'Bevan', cursive;
+	font-size: 40px;
+	display: block;
+	line-height: 80px;
 }
 
 #displayContainer {
-	width: 450px;
-	height: 120px;
+	width: 650px;
+	height: 170px;
 	background-color: #FFF8E1;
+	border-radius: 5px;
 	margin-bottom: 50px;
 	padding: 10px 15px;
 	position: absolute;
-	top: 40px;
+	top: 120px;
 	left: 50%;
 	transform: translateX(-50%);
 	box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 }
 
 .color_display {
-	width: 100px;
-	height: 100px;
+	width: 150px;
+	height: 150px;
 	background-color: black;
 	display: inline-block;
 	border: 5px solid #FFF8E1;
 }
 
 #inputContainer {
-	width: 400px;
-	height: 100px;
+	width: 600px;
 	padding: 10px;
 	position: absolute;
-	top: 200px;
+	top: 320px;
 	left: 50%;
 	transform: translateX(-50%);
 }
 
 .color_button {
-	width: 80px;
-	height: 80px;
+	width: 120px;
+	height: 120px;
 	display: inline-block;
 	border-radius: 50%;
 	margin: auto 5px;
@@ -55,9 +76,10 @@ body {
 	width: 250px;
 	height: 150px;
 	background-color: #FFF8E1;
+	border-radius: 5px;
 	padding: 10px;
 	position: absolute;
-	top: 200px;
+	top: 320px;
 	left: 50%;
 	transform: translateX(-50%);
 	box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
