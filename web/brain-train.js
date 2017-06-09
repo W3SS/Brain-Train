@@ -36,12 +36,14 @@ function initialize() {
     comboToCopy = getNewCombo()
     resultContainer.style.display = 'none'
     inputContainer.style.display = 'none'
-    displayColor(comboToCopy[0], display1)
-    setTimeout('displayColor(comboToCopy[1], display2)', 500)
+
+    setTimeout('displayColor(comboToCopy[0], display1)', 500)
+    setTimeout('displayColor(comboToCopy[1], display2)', 750)
     setTimeout('displayColor(comboToCopy[2], display3)', 1000)
-    setTimeout('displayColor(comboToCopy[3], display4)', 1500)
-    setTimeout('inputContainer.style.display = "block"', 3000)
-    setTimeout(hideColors, 3000)
+    setTimeout('displayColor(comboToCopy[3], display4)', 1250)
+    setTimeout('inputContainer.style.display = "block"', 2500)
+
+    setTimeout(hideColors, 2500)
 }
 
 function getNewCombo() {
@@ -83,11 +85,12 @@ function submitAnswer(color) {
         if (isSameCombo()) {
             results.innerHTML = "Good job!"
             ++score
+            // Play sound?
         } else {
-            results.innerHTML = "Try again"
+            results.innerHTML = "Try again.."
         }
 
-        scoreTally.innerHTML = "Score: " + score
+        scoreTally.innerHTML = score
         inputContainer.style.display = "none"
         resultContainer.style.display = "block"
     }   
@@ -101,10 +104,9 @@ function displayColor(color, colorDisplay) {
 }
 
 function hideColors() {
-    displayColor('grey', display1)
-    displayColor('grey', display2)
-    displayColor('grey', display3)
-    displayColor('grey', display4)
+    for (i = 0; i < displays.length; ++i) {
+        displayColor('grey', displays[i])
+    }
 }
 
 function isSameCombo() {
