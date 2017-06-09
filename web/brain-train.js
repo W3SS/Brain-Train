@@ -8,29 +8,39 @@ var btnBlue = document.getElementById('btnBlue')
 var btnGreen = document.getElementById('btnGreen')
 var btnYellow = document.getElementById('btnYellow')
 var btnRed = document.getElementById('btnRed')
+var resultContainer = document.getElementById('resultContainer')
+var results = document.getElementById('results')
+var resetBtn = document.getElementById('resetBtn')
+var scoreTally = document.getElementById('scoreTally')
 
-
+var displays = [display1, display2, display3, display4]
 var comboToCopy = ['', '','', '']
 var comboAnswer = ['', '','', '']
 var counter = 0;
+var score = 0;
 
 initialize()
-// submitAnswer()
 
-//     val answerCombo = submitAnswer()
-//     println("You answered ${answerCombo.print()}")
+btnBlue.onclick = function() { submitAnswer('blue') }
+btnGreen.onclick = function() { submitAnswer('green') }
+btnYellow.onclick = function() { submitAnswer('yellow') }
+btnRed.onclick = function() { submitAnswer('red') }
 
-//     if (isSameCombo(comboToCopy, answerCombo)) println("You matched it!") else println("You didn't match it.")
-// console.log(isSameCombo(comboToCopy, comboAnswer))
+resetBtn.onclick = function() { initialize() }
+
+
+// ----- Setup ------------
 
 function initialize() {
+    hideColors()
     comboToCopy = getNewCombo()
+    resultContainer.style.display = 'none'
     inputContainer.style.display = 'none'
     displayColor(comboToCopy[0], display1)
     setTimeout('displayColor(comboToCopy[1], display2)', 500)
     setTimeout('displayColor(comboToCopy[2], display3)', 1000)
     setTimeout('displayColor(comboToCopy[3], display4)', 1500)
-    setTimeout('inputContainer.style.display = "block"', 2000)
+    setTimeout('inputContainer.style.display = "block"', 3000)
     setTimeout(hideColors, 3000)
 }
 
@@ -57,6 +67,35 @@ function getRandomColor() {
     }
 }
 
+
+// ---------- Gameplay ----------------
+
+function submitAnswer(color) { 
+    // check counter & insert correct color in index matching counter
+    comboAnswer[counter] = color
+    displayColor(color, displays[counter])
+    ++counter
+
+    // launch wrap-up, validation if counter hits full
+    if (counter == 4) {
+        counter = 0
+
+        if (isSameCombo()) {
+            results.innerHTML = "Good job!"
+            ++score
+        } else {
+            results.innerHTML = "Try again"
+        }
+
+        scoreTally.innerHTML = "Score: " + score
+        inputContainer.style.display = "none"
+        resultContainer.style.display = "block"
+    }   
+}
+
+
+// -------- Utilities -------------
+
 function displayColor(color, colorDisplay) {
     colorDisplay.style.backgroundColor = color
 }
@@ -68,67 +107,14 @@ function hideColors() {
     displayColor('grey', display4)
 }
 
-btnBlue.onclick = function() { btnClick('blue') }
-btnGreen.onclick = function() { btnClick('green') }
-btnYellow.onclick = function() { btnClick('yellow') }
-btnRed.onclick = function() { btnClick('red') }
-
-// TODO
-function btnClick(color) { 
-    // check counter
-    // insert correct color in index matching counter
-    // ++counter
-    // launch wrap-up, validation if counter hits full
-}
-
-function inputColor(color, index) {
-    comboAnswer[index] = color
-    console.log("Set button " + (index + 1) + " to " + color)
-}
-
-// while (true) {
-//         print("Type: ")
-//         val color = input.next()
-//         if (!colorRegex.matches(color)) {
-//             continue
-//         } else when (color) {
-//             "blue" -> return 0
-//             "yellow" -> return 1
-//             "red" -> return 2
-//             "green" -> return 3
-//         }
-//     }
-
-function submitAnswer() {
-    // switch (counter) {
-    //     case 0:
-    //         console.log("First")
-    //         break
-    //     case 1:
-    //         comboAnswer[0] = btnClickListener()
-    //         displayColor(comboAnswer[0], display1)
-    //     default:
-    //         console.log("oops")
-    // }
-    
-    // console.log("Second")
-    // comboAnswer[0] = btnClickListener()
-    // console.log("Third")
-    // comboAnswer[0] = btnClickListener()
-    // console.log("Fourth")
-    // comboAnswer[0] = btnClickListener()
-
-    // ++counter
-}
-
-function isSameCombo(combo1, combo2) {
-    if (combo1[0] != combo2[0]) {
+function isSameCombo() {
+    if (comboToCopy[0] != comboAnswer[0]) {
         return false
-    } else if (combo1[1] != combo2[1]) {
+    } else if (comboToCopy[1] != comboAnswer[1]) {
         return false
-    } else if (combo1[2] != combo2[2]) {
+    } else if (comboToCopy[2] != comboAnswer[2]) {
         return false
     } else {
-        return combo1[3] == combo2[3]
+        return comboToCopy[3] == comboAnswer[3]
     }
 }
