@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<title>Brain Train</title>
+		<link rel="stylesheet" type="text/css" href="styles.css">
+		<link href="https://fonts.googleapis.com/css?family=Bevan|Roboto" rel="stylesheet">
+	</head>
+
+	<body>
+
+		<header>
+			<img src="images/logo.png">
+			<span>Brain Train</span>
+		</header>
+
+		<div id="displayContainer">
+			<div id="display1" class="color_display"></div>
+			<div id="display2" class="color_display"></div>
+			<div id="display3" class="color_display"></div>
+			<div id="display4" class="color_display"></div>
+		</div>
+
+		<div id="inputContainer">
+			<img src="images/blue.png" id="btnBlue" class="color_button">
+			<img src="images/green.png" id="btnGreen" class="color_button">
+			<img src="images/yellow.png" id="btnYellow" class="color_button">
+			<img src="images/red.png" id="btnRed" class="color_button">
+		</div>
+
+		<div id="resultContainer">
+			<span id="results">Results</span>
+			<br>
+			<span id="scoreLabel">Score: </span>
+			<span id="scoreTally"></span>
+			<br>
+			<button id="resetBtn" class="button">
+				<span>
+					Reset 
+				</span>
+			</button>
+		</div>
+
+		<footer>
+			<span>&copy; 2017 Nico Salvador</span>
+		</footer>
+
+		<script>
+			require('./renderer.js')
+		</script>
+		<script type="text/javascript" src="brain-train.js"></script>
+
+	</body>
+
+</html>

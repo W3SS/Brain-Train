@@ -1,0 +1,14 @@
+{
+  "name": "brain-train-desktop",
+  "version": "1.0.0",
+  "description": "Electron.js test app",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "author": "Nico Salvador",
+  "license": "MIT",
+  "dependencies": {
+    "electron": "^1.7.5"
+  }
+}
